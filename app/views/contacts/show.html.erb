@@ -12,7 +12,22 @@
 
 <p>
   <strong>Kind:</strong>
-  <%= @contact.kind %>
+  <%= @contact.kind.description %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @contact.address.street %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @contact.address.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @contact.address.state %>
 </p>
 
 <p>

@@ -23,8 +23,25 @@
 
   <div class="field">
     <%= f.label :kind_id %>
-    <%= f.text_field :kind_id %>
+    <%= collection_select(:contact, :kind_id, @kinds, :id, :description) %> 
   </div>
+
+  <%= f.fields_for :address do |address_fields| %>
+    <div class="field">
+      <%= address_fields.label :street %>
+      <%= address_fields.text_field :street %>
+    </div>
+
+    <div class="field">
+      <%= address_fields.label :city %>
+      <%= address_fields.text_field :city %>
+    </div>
+
+    <div class="field">
+      <%= address_fields.label :state %>
+      <%= address_fields.text_field :state %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= f.label :rmk %>
