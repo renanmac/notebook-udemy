@@ -1,2 +1,11 @@
 "pt-BR":
   hello: "Olá Mundo!"
+  
+  buttons:
+    show: Mostrar
+    edit: Editar
+    destroy: Apagar
+
+  messages:
+    confirm: Você tem certeza?
+    listing: Listando

@@ -11,7 +11,7 @@ namespace :utils do
 	    name: Faker::Name.name,
 	    email: Faker::Internet.free_email,
 	    kind: Kind.all.sample,
-	    rmk: Faker::Lorem.paragraph
+	    rmk: LeroleroGenerator.sentence([1,2,3].sample)
 	  )
     end
   puts "Criando Contatos ... [OK]"
@@ -29,10 +29,12 @@ namespace :utils do
 
   puts "Criando Telefones ..."
     Contact.all.each do |contact|
-      Phone.create!(
-	    phone: Faker::PhoneNumber.phone_number,
-	    contact: contact
+      (Random.rand(1..5)).times do |p|
+        Phone.create!(
+          phone: Faker::PhoneNumber.phone_number,
+	        contact: contact
 	  )
+      end
     end
   puts "Criando Telefones ... [OK]"
   end
