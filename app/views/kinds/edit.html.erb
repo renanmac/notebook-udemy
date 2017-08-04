@@ -1,6 +1,8 @@
-<h1>Editing Kind</h1>
+<div class="form-wrapper">
+	<h1>Editing Kind</h1>
 
-<%= render 'form', kind: @kind %>
+	<%= render 'form', kind: @kind %>
 
-<%= link_to 'Show', @kind %> |
-<%= link_to 'Back', kinds_path %>
+	<%= link_to 'Show', @kind %> |
+	<%= link_to "<span class='glyphicon glyphicon-home' aria-hidden='true'> #{t('buttons.back')}</span>".html_safe, kinds_path, class: "btn btn-info" %>
+</div>

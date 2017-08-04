@@ -1,12 +1,14 @@
+<%= render  "/shared/menu" %>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Kinds</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Description</th>
-      <th colspan="3"></th>
+      <th colspan="20"></th>
     </tr>
   </thead>
 
@@ -14,9 +16,8 @@
     <% @kinds.each do |kind| %>
       <tr>
         <td><%= kind.description %></td>
-        <td><%= link_to 'Show', kind %></td>
-        <td><%= link_to 'Edit', edit_kind_path(kind) %></td>
-        <td><%= link_to 'Destroy', kind, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "<span class='glyphicon glyphicon-pencil' aria-hidden='true'> #{t('buttons.edit')}</span>".html_safe, edit_kind_path(kind), class: "btn btn-primary" %></td>
+        <td><%= link_to "<span class='glyphicon glyphicon-remove' aria-hidden='true'> #{t('buttons.destroy')}</span>".html_safe, kind, method: :delete, data: { confirm: t('messages.confirm') }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +25,6 @@
 
 <br>
 
-<%= link_to 'New Kind', new_kind_path %>
+<%= link_to "<span class='glyphicon glyphicon-plus' aria-hidden='true'> #{t('buttons.new')}</span>".html_safe, new_kind_path, class: "btn btn-success" %>
+<%= link_to "<span class='glyphicon glyphicon-home' aria-hidden='true'> #{t('buttons.home')}</span>".html_safe, root_path, class: "btn btn-info" %>
+

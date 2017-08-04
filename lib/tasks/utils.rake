@@ -6,7 +6,7 @@ namespace :utils do
   puts "Criando Tipos ... [OK]"
 
   puts "Criando Contatos ..."
-    10.times do |c|
+    100.times do |c|
       Contact.create!(
 	    name: Faker::Name.name,
 	    email: Faker::Internet.free_email,

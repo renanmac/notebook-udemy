@@ -1,33 +1,36 @@
+<%= render  "/shared/menu" %>
 <p id="notice"><%= notice %></p>
 
 <h1><%= @contacts.model.model_name.human(count: @contacts.count) %></h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th><%= @contacts.model.human_attribute_name('name') %></th>
       <th><%= @contacts.model.human_attribute_name('email') %></th>
       <th><%= @contacts.model.human_attribute_name('kind') %></th>
       <th><%= @contacts.model.human_attribute_name('rmk') %></th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @contacts.each do |contact| %>
       <tr>
-        <td><%= contact.name %></td>
-        <td><%= contact.email %></td>
-        <td><%= contact.kind.description %></td>
-        <td><%= contact.rmk %></td>
-        <td><%= link_to t('buttons.show'), contact %></td>
-        <td><%= link_to t('buttons.edit'), edit_contact_path(contact) %></td>
-        <td><%= link_to t('buttons.destroy'), contact, method: :delete, data: { confirm: t('messages.confirm') } %></td>
+          <td><%= contact.name %></td>
+          <td><%= contact.email %></td>
+          <td><%= contact.kind.description %></td>
+          <td><%= contact.rmk %></td>
+        <td><%= link_to "<span class='glyphicon glyphicon-pencil' aria-hidden='true'> #{t('buttons.edit')}</span>".html_safe, edit_contact_path(contact), class: "btn btn-primary" %>
+        </td>
+        <td><%= link_to "<span class='glyphicon glyphicon-remove' aria-hidden='true'> #{t('buttons.destroy')}</span>".html_safe, contact, method: :delete, data: { confirm: t('messages.confirm') }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= paginate @contacts %>
+</br>
+<%= link_to "<span class='glyphicon glyphicon-plus' aria-hidden='true'> #{t('buttons.new')}</span>".html_safe, new_contact_path, class: "btn btn-success" %>
+<%= link_to "<span class='glyphicon glyphicon-home' aria-hidden='true'> #{t('buttons.home')}</span>".html_safe, root_path, class: "btn btn-info" %>
 
-<br>
-
-<%= link_to 'New Contact', new_contact_path %>
+<div class="space"></div>

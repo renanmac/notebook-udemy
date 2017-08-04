@@ -1,7 +1,7 @@
 <%= form_for(contact) do |f| %>
   <% if contact.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+      <h2><%= "#{pluralize(contact.errors.count, 'erros')} #{t('messages.errors_contacts')}:" %> </h2>
 
       <ul>
       <% contact.errors.full_messages.each do |message| %>
@@ -11,51 +11,50 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-default">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
 
-  <div class="field">
+  <div class="form-default">
     <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
 
-  <div class="field">
+  <div class="form-default">
     <%= f.label :kind_id %>
     <%= collection_select(:contact, :kind_id, @kinds, :id, :description) %> 
   </div>
 
   <%= f.fields_for :address do |address_fields| %>
-    <div class="field">
+    <div class="form-default">
       <%= address_fields.label :street %>
       <%= address_fields.text_field :street %>
     </div>
 
-    <div class="field">
+    <div class="form-default">
       <%= address_fields.label :city %>
       <%= address_fields.text_field :city %>
     </div>
 
-    <div class="field">
+    <div class="form-default">
       <%= address_fields.label :state %>
       <%= address_fields.select :state, options_for_state(@contact.address.state) %>
     </div>
   <% end %>
+  <div id="phone">
+    <%= f.fields_for :phones do |phones_fields| %>
+      <%= render partial: 'phone_fields', locals: {f: phones_fields}%>
+    <% end %>
+    <%= link_to_add_association('[Adicionar Telefone]', f, :phones)%>
+  </div>
 
-  <%= f.fields_for :phones do |phones_fields| %>
-    <div class="field">
-      <%= phones_fields.label :phone %>
-      <%= phones_fields.text_field :phone %>
-    </div>
-  <% end %>
-
-  <div class="field">
+  <div class="form-default">
     <%= f.label :rmk %>
     <%= f.text_area :rmk %>
   </div>
-
-  <div class="actions">
+</br>
+  <div class="action">
     <%= f.submit %>
   </div>
 <% end %>

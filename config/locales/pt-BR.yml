@@ -5,7 +5,11 @@
     show: Mostrar
     edit: Editar
     destroy: Apagar
+    new: Novo
+    home: Início
+    back: Voltar
 
   messages:
     confirm: Você tem certeza?
     listing: Listando
+    errors_contacts: impediram que o contato fosse salvo
